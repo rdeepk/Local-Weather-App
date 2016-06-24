@@ -1,0 +1,73 @@
+/* Base styles
+-------------------------------------------*/
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+p {
+	margin: 0;
+}
+
+.wrapper {
+	padding: 70px 0;
+}
+
+#city {
+	font-size: 2.8em;
+	font-weight: 600;
+	/*padding-bottom: 20px;*/
+	text-align: center;	
+	line-height: 1.5;
+}
+
+.weather-details {
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+#icon {
+	font-size: 6em;
+	padding-left: 10px;
+}
+
+#temperature {
+	font-size: 4em;
+	line-height: 1;
+}
+
+.weather-details a {
+	color: grey;
+}
+
+.weather-details a:hover,
+.weather-details a:focus {
+	color: grey;
+	outline: none;
+	text-decoration: none;
+}
+
+.degree {
+	font-size: 2em;
+	color: grey;
+	position: relative;
+	top: -30px;
+}
+
+#unit {
+	font-size: 1em;
+	display: inline-block;
+	width: 45px;
+	text-align: left;
+}
+
+#weather {
+	text-align: center;
+	text-transform: capitalize;
+	font-size: 1.5em;
+	position: relative;
+	left: -28px;
+	line-height: 1;
+	padding-bottom: 20px;
+}
