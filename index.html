@@ -29,6 +29,10 @@
     <body>
     	<div class="wrapper">
             <div class="container">
+            	<div class="row">
+                    <div class="col-sm-12" id="date">
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-sm-12">
                     <p id="city"></p>
@@ -42,20 +46,30 @@
                         <span class="degree">&deg;<a href="#" id="unit" onClick="changeUnit();return false">C</a></span>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12" id="date">
+                <div class="row other-info">
+                    <div class="col-sm-2 col-sm-offset-2 col-xs-3 col-xs-offset-3">
+                    	<span id="sunrise">
+                        	<i class="wi wi-sunrise"></i>
+                            <label>Sunrise</label>
+                        </span>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12" id="day">
-                    <span id="sunset">Sunset: </span>
-                    <span id="sunrise">Sunrise: </span>
+                    <div class="col-sm-2 col-xs-3">                    	
+                        <span id="sunset">
+                        	<i class="wi wi-sunset"></i>
+                            <label>Sunset</label>
+                        </span>
                     </div>
-                 </div>
-                 <div class="row">
-                    <div class="col-sm-12" id="other_info">
-                    <span id="humidity">Humidity: </span>
-                    <span id="wind">Wind Speed: </span>
+                    <div class="col-sm-2 col-sm-offset-0 col-xs-3 col-xs-offset-3">
+                    	<span id="humidity">
+                            <i class="wi wi-humidity"></i>
+                            <label>Humidity</label>
+                        </span>
+                    </div>
+                    <div class="col-sm-2 col-xs-3">
+                    	<span id="wind">
+                            <i class="wi wi-windy"></i>
+                            <label>Wind</label>
+                        </span>
                     </div>
                  </div>
             </div><!-- .container -->
@@ -108,11 +122,11 @@
 				setOtherInfo(response);
                 })
                 .catch(function(error) { 
-                    document.write('Error1: ', error);
+                    document.write('Error: ', error);
                 });
             })
             .catch(function(error) { 
-                document.write('Error2: ', error);
+                document.write('Error: ', error);
             });
         }
         
@@ -151,19 +165,23 @@
         }
         
         function getIcon(resp) {
+			response = JSON.parse(resp);
             var weatherIcons =  data  ;
             var prefix = 'wi wi-';
-            var code = JSON.parse(resp).weather[0].id;
+            var code = response.weather[0].id;
             var icon = weatherIcons[code].icon;
-        
+        	var responseIcon = response.weather[0].icon;
+			var dayOrNight = responseIcon.charAt(responseIcon.length-1) === "d"?"day":"night";
+			console.log(dayOrNight);
               // If we are not in the ranges mentioned above, add a day/night prefix.
               if (!(code > 699 && code < 800) && !(code > 899 && code < 1000)) {
-                icon = 'night-' + icon;
+                icon = dayOrNight + '-' + icon;
               }
-            
               // Finally tack on the prefix.
                 icon = prefix + icon;
+				console.log(icon);
               document.getElementById('icon').className =  icon;
+			  
         }
         
         function changeUnit(){
@@ -221,7 +239,6 @@
 		  }
 		  
 		}
-        
         
         init();
         </script>
