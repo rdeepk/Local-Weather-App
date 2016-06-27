@@ -16,13 +16,6 @@ p {
 	margin: 0;
 }
 
-.tab-size {
-  -webkit-tab-size: 2 !important;
-     -moz-tab-size: 2 !important;
-       -o-tab-size: 2 !important;
-          tab-size: 2 !important;
-}
-
 /* Header Styles
 -------------------------------------------*/
 .wrapper {
